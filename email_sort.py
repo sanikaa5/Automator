@@ -5,7 +5,7 @@ import os
 
 
 # Define the subjects to search for
-specific_subjects = ["hi"]#add all subjects
+specific_subjects = ["subject1","subject2"]#add all subjects
 
 def create_gmail_service():
     # OAuth 2.0 scopes required for accessing Gmail API
@@ -22,7 +22,7 @@ def create_gmail_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                r'D:/automate/client_secret_401344571013-307or3r0sgt3vjqg83ug7aml98deskl8.apps.googleusercontent.com.json', SCOPES)#add credentials json file path obtained from google console 
+                r'credentials.com.json', SCOPES)#add credentials json file path obtained from google console 
             creds = flow.run_local_server(port=0)
         
         # Save the credentials for the next run
