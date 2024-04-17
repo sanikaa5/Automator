@@ -25,7 +25,7 @@ This project automates various email tasks using the Gmail API.
 1. **email_sort.py**:
    - This script searches for specific subjects in emails and retrieves their content.
 
-2. **email_send.py2**:
+2. **email_send.py**:
    - This script sends an email to multiple recipients with a message and a link to a Google Sheets document.
 
 3. **email_reply.py**:
