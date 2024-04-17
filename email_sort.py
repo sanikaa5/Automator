@@ -5,7 +5,7 @@ import os
 
 
 # Define the subjects to search for
-specific_subjects = ["Subject1","Subject2"]#add all subjects
+specific_subjects = ["hi"]#add all subjects
 
 def create_gmail_service():
     # OAuth 2.0 scopes required for accessing Gmail API
@@ -22,7 +22,7 @@ def create_gmail_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                r'credentials_path.json', SCOPES)#add credentials json file path obtained from google console 
+                r'D:/automate/client_secret_401344571013-307or3r0sgt3vjqg83ug7aml98deskl8.apps.googleusercontent.com.json', SCOPES)#add credentials json file path obtained from google console 
             creds = flow.run_local_server(port=0)
         
         # Save the credentials for the next run
@@ -55,12 +55,12 @@ def get_email_content(service, message_id):
         
         # Extract subject and body from the email message
         headers = message['payload']['headers']
-        subject = next(item['value'] for item in headers if item['name'] == 'Subject')
-        body = message['snippet']  # Using 'snippet' for simplicity, you may retrieve the full body if needed
+        subject = next((item['value'] for item in headers if item['name'] == 'Subject'), None)
+        body = message.get('snippet', '')  # Using 'snippet' for simplicity, you may retrieve the full body if needed
         
         return subject, body
     except Exception as e:
-        print("An error occurred while retrieving email content:", e)
+        print(f"An error occurred while retrieving email content for message ID {message_id}: {e}")
         return None, None
 
 def main():
